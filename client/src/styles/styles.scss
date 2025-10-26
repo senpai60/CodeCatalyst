@@ -5,3 +5,57 @@ body {
   width: 100%;
   height: 100%;
 }
+
+$right-main-top-height:30%;
+
+$left-main-width:80%;
+main{
+    .left-main{
+        width: $left-main-width;
+
+        nav{
+            .link-bg{
+                transition: all ease-in-out .2s;
+            }
+                  
+            a{
+                transition:  all ease-in-out .5s;
+            }
+        }
+    }
+    .right-main{
+        width: calc(100% - #{$left-main-width});
+        .right-top{
+            height: $right-main-top-height;
+            flex-shrink: 0;
+        }
+        .right-bot{
+            height: calc(100% - #{$right-main-top-height});
+            flex-shrink: 0;
+        }
+    }
+    
+}
+
+/* Mobile devices (up to 767px) */
+@media (max-width: 767px) {
+  /* Your mobile styles here */
+  main{
+    .left-main{
+        width: 100%;
+        .big-nav{
+            display: none;
+        }
+    }
+  }
+}
+
+/* Tablet devices (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+}
+
+/* Desktop (1025px and above) - Optional */
+@media (min-width: 1025px) {
+  /* Your desktop styles here */
+}

@@ -3,4 +3,41 @@ html,
 body {
   width: 100%;
   height: 100%;
+}
+
+main .left-main {
+  width: 80%;
+}
+main .left-main nav .link-bg {
+  transition: all ease-in-out 0.2s;
+}
+main .left-main nav a {
+  transition: all ease-in-out 0.5s;
+}
+main .right-main {
+  width: calc(100% - 80%);
+}
+main .right-main .right-top {
+  height: 30%;
+  flex-shrink: 0;
+}
+main .right-main .right-bot {
+  height: calc(100% - 30%);
+  flex-shrink: 0;
+}
+
+/* Mobile devices (up to 767px) */
+@media (max-width: 767px) {
+  /* Your mobile styles here */
+  main .left-main {
+    width: 100%;
+  }
+  main .left-main .big-nav {
+    display: none;
+  }
+}
+/* Tablet devices (768px to 1024px) */
+/* Desktop (1025px and above) - Optional */
+@media (min-width: 1025px) {
+  /* Your desktop styles here */
 }/*# sourceMappingURL=styles.css.map */
