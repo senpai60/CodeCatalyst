@@ -10,7 +10,7 @@ const navMainLinks = [
 function NavMain() {
   return (
     <>
-    <nav className="big-nav w-full px-5 py-2 bg-zinc-900 flex items-center justify-between rounded-2xl">
+    <nav className="big-nav w-full px-5 py-1 bg-zinc-900 flex items-center justify-between rounded-2xl">
       <div className="logo">
         <h1>
           Code <span className="text-orange-600">⓿_⓿ </span>Catalyst{" "}
@@ -23,7 +23,7 @@ function NavMain() {
             className="relative flex items-center group"
           >
             <a
-              className="px-3 py-2 relative z-20 transition-colors duration-200 ease-in-out group-hover:text-zinc-950"
+              className="px-3 py-1 relative z-20 transition-colors duration-200 ease-in-out group-hover:text-zinc-950"
               href={link.href}
             >
               {link.text}
