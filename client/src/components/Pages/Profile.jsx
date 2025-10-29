@@ -38,7 +38,7 @@ function Profile() {
         <div className="bg-zinc-900 rounded-xl p-4 sm:p-5 md:p-6 border-2 border-zinc-800">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5">
             {/* Avatar */}
-            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-orange-600 to-orange-500 rounded-full flex items-center justify-center text-3xl sm:text-4xl text-white flex-shrink-0 shadow-lg shadow-orange-600/30">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-teal-800 to-teal-950 rounded-full flex items-center justify-center text-3xl sm:text-4xl text-white flex-shrink-0 shadow-lg shadow-teal-800/30">
               <FaUser />
             </div>
 
@@ -51,21 +51,21 @@ function Profile() {
               {/* Stats */}
               <div className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4 mt-3">
                 <div className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-800 rounded-lg border border-zinc-700">
-                  <BsChatDotsFill className="text-orange-600 text-sm" />
+                  <BsChatDotsFill className="text-teal-800 text-sm" />
                   <div className="text-left">
                     <p className="text-xs text-zinc-400">Total Prompts</p>
                     <p className="text-sm font-semibold">{userData.totalPrompts}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-800 rounded-lg border border-zinc-700">
-                  <FaCode className="text-orange-600 text-sm" />
+                  <FaCode className="text-teal-800 text-sm" />
                   <div className="text-left">
                     <p className="text-xs text-zinc-400">Code Reviews</p>
                     <p className="text-sm font-semibold">{userData.codeReviews}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-800 rounded-lg border border-zinc-700">
-                  <IoSparkles className="text-orange-600 text-sm" />
+                  <IoSparkles className="text-teal-800 text-sm" />
                   <div className="text-left">
                     <p className="text-xs text-zinc-400">Member Since</p>
                     <p className="text-sm font-semibold">{userData.joinedDate}</p>
@@ -75,7 +75,7 @@ function Profile() {
             </div>
 
             {/* Edit Button */}
-            <button className="px-4 py-2 text-xs sm:text-sm bg-orange-600 hover:bg-orange-500 rounded-lg transition-colors duration-200 font-medium">
+            <button className="px-4 py-2 text-xs sm:text-sm bg-teal-800 hover:bg-teal-950 rounded-lg transition-colors duration-200 font-medium">
               Edit Profile
             </button>
           </div>
@@ -88,7 +88,7 @@ function Profile() {
             {/* Personality Section */}
             <div className="bg-zinc-900 rounded-xl p-4 sm:p-5 border-2 border-zinc-800">
               <div className="flex items-center gap-2 mb-3">
-                <FaBrain className="text-orange-600 text-base" />
+                <FaBrain className="text-teal-800 text-base" />
                 <h2 className="text-sm sm:text-base font-semibold">Personality Profile</h2>
                 <span className="ml-auto text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">AI Detected</span>
               </div>
@@ -96,7 +96,7 @@ function Profile() {
               <div className="space-y-3">
                 <div className="p-3 bg-zinc-800/50 rounded-lg border border-zinc-700">
                   <p className="text-xs text-zinc-400 mb-1">Type</p>
-                  <p className="text-sm font-medium text-orange-600">{userData.personality.type}</p>
+                  <p className="text-sm font-medium text-teal-800">{userData.personality.type}</p>
                 </div>
 
                 <div>
@@ -124,7 +124,7 @@ function Profile() {
             {/* Recent Activity */}
             <div className="bg-zinc-900 rounded-xl p-4 sm:p-5 border-2 border-zinc-800">
               <div className="flex items-center gap-2 mb-3">
-                <BsBarChartFill className="text-orange-600 text-base" />
+                <BsBarChartFill className="text-teal-800 text-base" />
                 <h2 className="text-sm sm:text-base font-semibold">Recent Activity</h2>
               </div>
               
@@ -132,9 +132,9 @@ function Profile() {
                 {userData.recentActivity.map((activity, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-2.5 p-2.5 bg-zinc-800/50 rounded-lg border border-zinc-700/50 hover:border-orange-600/30 transition-colors"
+                    className="flex items-start gap-2.5 p-2.5 bg-zinc-800/50 rounded-lg border border-zinc-700/50 hover:border-teal-800/30 transition-colors"
                   >
-                    <div className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 bg-teal-800 rounded-full mt-1.5 flex-shrink-0"></div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs text-gray-100">{activity.action}</p>
                       <p className="text-xs text-zinc-500 mt-0.5">{activity.time}</p>
@@ -150,7 +150,7 @@ function Profile() {
             {/* Interests & Skills */}
             <div className="bg-zinc-900 rounded-xl p-4 sm:p-5 border-2 border-zinc-800">
               <div className="flex items-center gap-2 mb-3">
-                <FaLightbulb className="text-orange-600 text-base" />
+                <FaLightbulb className="text-teal-800 text-base" />
                 <h2 className="text-sm sm:text-base font-semibold">Detected Interests</h2>
                 <span className="ml-auto text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">AI Analyzed</span>
               </div>
@@ -164,7 +164,7 @@ function Profile() {
                     </div>
                     <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-orange-600 to-orange-500 rounded-full transition-all duration-500"
+                        className="h-full bg-gradient-to-r from-teal-800 to-teal-950 rounded-full transition-all duration-500"
                         style={{ width: `${interest.confidence}%` }}
                       ></div>
                     </div>
@@ -174,7 +174,7 @@ function Profile() {
 
               <div className="mt-4 p-3 bg-zinc-800/30 rounded-lg border border-zinc-700/50">
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  <IoSparkles className="inline text-orange-600 mr-1" />
+                  <IoSparkles className="inline text-teal-800 mr-1" />
                   These interests are detected from your conversation patterns and code review history
                 </p>
               </div>
@@ -184,23 +184,23 @@ function Profile() {
             <div className="bg-zinc-900 rounded-xl p-4 sm:p-5 border-2 border-zinc-800">
               <h2 className="text-sm sm:text-base font-semibold mb-3">Quick Actions</h2>
               <div className="grid grid-cols-2 gap-2.5">
-                <button className="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-orange-600/50 rounded-lg transition-all duration-200 text-left">
-                  <FaHeart className="text-orange-600 text-sm mb-1.5" />
+                <button className="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-teal-800/50 rounded-lg transition-all duration-200 text-left">
+                  <FaHeart className="text-teal-800 text-sm mb-1.5" />
                   <p className="text-xs font-medium">Saved Reviews</p>
                   <p className="text-xs text-zinc-500 mt-0.5">View all</p>
                 </button>
-                <button className="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-orange-600/50 rounded-lg transition-all duration-200 text-left">
-                  <BsBarChartFill className="text-orange-600 text-sm mb-1.5" />
+                <button className="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-teal-800/50 rounded-lg transition-all duration-200 text-left">
+                  <BsBarChartFill className="text-teal-800 text-sm mb-1.5" />
                   <p className="text-xs font-medium">Analytics</p>
                   <p className="text-xs text-zinc-500 mt-0.5">View stats</p>
                 </button>
-                <button className="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-orange-600/50 rounded-lg transition-all duration-200 text-left">
-                  <FaCode className="text-orange-600 text-sm mb-1.5" />
+                <button className="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-teal-800/50 rounded-lg transition-all duration-200 text-left">
+                  <FaCode className="text-teal-800 text-sm mb-1.5" />
                   <p className="text-xs font-medium">Code History</p>
                   <p className="text-xs text-zinc-500 mt-0.5">Browse</p>
                 </button>
-                <button className="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-orange-600/50 rounded-lg transition-all duration-200 text-left">
-                  <IoSparkles className="text-orange-600 text-sm mb-1.5" />
+                <button className="p-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-teal-800/50 rounded-lg transition-all duration-200 text-left">
+                  <IoSparkles className="text-teal-800 text-sm mb-1.5" />
                   <p className="text-xs font-medium">Preferences</p>
                   <p className="text-xs text-zinc-500 mt-0.5">Customize</p>
                 </button>

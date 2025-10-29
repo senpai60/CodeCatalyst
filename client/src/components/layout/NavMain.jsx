@@ -11,9 +11,9 @@ import RightSectionTop from "./RightSectionTop";
 import RightSectionBot from "./RightSectionBot";
 
 const navMainLinks = [
-  { to: "/", text: <AiFillHome /> },
-  { to: "/settings", text: <BsGearFill /> },
-  { to: "/profile", text: <FaUser /> },
+  { to: "/", text: <AiFillHome size={15}  className="z-999"/> },
+  { to: "/settings", text: <BsGearFill size={15} className="z-999" /> },
+  { to: "/profile", text: <FaUser  size={15} className="z-999"/> },
 ];
 
 function NavMain() {
@@ -51,20 +51,20 @@ function NavMain() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="big-nav w-full px-5 md:py-1 flex items-center justify-between rounded-2xl">
+      <nav className="big-nav fixed w-[77%] z-999 bg-zinc-950 px-18 md:py-2 flex items-center justify-between rounded-2xl">
         <div className="logo">
           <h1>
-            Code <span className="text-orange-600">Catalyst</span>
+            Code <span className="text-teal-800">Catalyst</span>
           </h1>
         </div>
-        <div className="nav-links hidden md:hidden lg:flex items-center gap-4">
+        <div className="nav-links hidden md:hidden lg:flex items-center gap-0">
           {navMainLinks.map((link, linkIndex) => (
             <NavLink
               key={linkIndex}
               to={link.to}
               className={({ isActive }) =>
-                `flex items-center justify-center w-12 h-12 rounded-xl transition-colors duration-200 ease-in-out text-2xl
-                  ${isActive ? "text-orange-600 bg-zinc-900" : "text-gray-400 hover:text-orange-600"}`
+                `flex items-center justify-center w-8 h-8 rounded-xl transition-colors duration-200 ease-in-out text-2xl
+                  ${isActive ? "text-teal-800 bg-zinc-900" : "text-gray-400 hover:text-teal-800"}`
               }
               style={{ transition: "color 0.3s, background 0.3s" }}
             >
@@ -77,7 +77,7 @@ function NavMain() {
       {/* Mobile Navigation */}
       <nav className="w-full lg:hidden flex justify-between px-5 py-2">
         <div className="nav-icon cursor-pointer">
-          <BsList size={24} onClick={() => setLeftVisible(true)} />
+          <BsList size={15} onClick={() => setLeftVisible(true)} />
         </div>
         <div className="nav-links flex items-center gap-2 capitalize">
           {navMainLinks.map((link, linkIndex) => (
@@ -86,12 +86,12 @@ function NavMain() {
                 to={link.to}
                 className={({ isActive }) =>
                   `px-2 py-2 relative z-20 transition-colors duration-200 ease-in-out text-2xl
-                  ${isActive ? "text-orange-600" : "group-hover:text-zinc-950"}`
+                  ${isActive ? "text-teal-800" : "group-hover:text-zinc-950"}`
                 }
               >
                 {link.text}
               </NavLink>
-              <span className="absolute left-0 bottom-0 h-0 w-full bg-orange-600 rounded group-hover:h-full transition-all duration-300 ease-in-out z-10 pointer-events-none" />
+              <span className="absolute left-0 bottom-0 h-0 w-full bg-teal-800 rounded group-hover:h-full transition-all duration-300 ease-in-out z-10 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -104,7 +104,7 @@ function NavMain() {
         style={{ zIndex: 999 }}
       >
         <CgClose
-          className="absolute right-4 top-4 text-orange-600 cursor-pointer hover:text-orange-500 transition-colors"
+          className="absolute right-4 top-4 text-teal-800 cursor-pointer hover:text-teal-500 transition-colors"
           size={30}
           onClick={() => setLeftVisible(false)}
         />

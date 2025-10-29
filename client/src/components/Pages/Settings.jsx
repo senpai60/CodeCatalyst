@@ -31,7 +31,7 @@ function Settings() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">
-            Settings <span className="text-orange-600">& Preferences</span>
+            Settings <span className="text-teal-800">& Preferences</span>
           </h1>
           <p className="text-zinc-400 text-sm md:text-base">
             Manage your account and application preferences
@@ -46,14 +46,14 @@ function Settings() {
               onClick={() => setActiveTab(tab.id)}
               className={`relative px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 group ${
                 activeTab === tab.id
-                  ? 'bg-orange-600 text-white'
+                  ? 'bg-teal-800 text-white'
                   : 'bg-zinc-900 text-zinc-400 hover:text-zinc-100'
               }`}
             >
               <span className="text-lg">{tab.icon}</span>
               <span className="text-sm font-medium hidden sm:inline">{tab.label}</span>
               {activeTab !== tab.id && (
-                <span className="absolute left-0 bottom-0 h-0 w-full bg-orange-600/20 rounded transition-all duration-300 group-hover:h-full -z-10" />
+                <span className="absolute left-0 bottom-0 h-0 w-full bg-teal-800/20 rounded transition-all duration-300 group-hover:h-full -z-10" />
               )}
             </button>
           ))}
@@ -64,13 +64,13 @@ function Settings() {
           {/* Profile Tab */}
           {activeTab === 'profile' && (
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-orange-600 mb-3">Profile Information</h2>
+              <h2 className="text-xl font-semibold text-teal-800 mb-3">Profile Information</h2>
               
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center text-2xl text-orange-600">
+                <div className="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center text-2xl text-teal-800">
                   <FaUser />
                 </div>
-                <button className="px-3 py-2 text-sm bg-orange-600 hover:bg-orange-500 rounded-lg transition-colors duration-200">
+                <button className="px-3 py-2 text-sm bg-teal-800 hover:bg-teal-500 rounded-lg transition-colors duration-200">
                   Change Avatar
                 </button>
               </div>
@@ -80,7 +80,7 @@ function Settings() {
                   <label className="block text-xs font-medium text-zinc-400 mb-1.5">Full Name</label>
                   <input
                     type="text"
-                    className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-orange-600 transition-colors"
+                    className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-teal-800 transition-colors"
                     placeholder="John Doe"
                   />
                 </div>
@@ -88,7 +88,7 @@ function Settings() {
                   <label className="block text-xs font-medium text-zinc-400 mb-1.5">Email</label>
                   <input
                     type="email"
-                    className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-orange-600 transition-colors"
+                    className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-teal-800 transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -96,13 +96,13 @@ function Settings() {
                   <label className="block text-xs font-medium text-zinc-400 mb-1.5">Username</label>
                   <input
                     type="text"
-                    className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-orange-600 transition-colors"
+                    className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-teal-800 transition-colors"
                     placeholder="@johndoe"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-zinc-400 mb-1.5">Role</label>
-                  <select className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-orange-600 transition-colors">
+                  <select className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-teal-800 transition-colors">
                     <option>Developer</option>
                     <option>Designer</option>
                     <option>Student</option>
@@ -110,7 +110,7 @@ function Settings() {
                 </div>
               </div>
 
-              <button className="w-full md:w-auto px-5 py-2 text-sm bg-orange-600 hover:bg-orange-500 rounded-lg transition-colors duration-200 font-medium">
+              <button className="w-full md:w-auto px-5 py-2 text-sm bg-teal-800 hover:bg-teal-500 rounded-lg transition-colors duration-200 font-medium">
                 Save Changes
               </button>
             </div>
@@ -119,12 +119,12 @@ function Settings() {
           {/* API Keys Tab */}
           {activeTab === 'api' && (
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-orange-600 mb-3">API Keys</h2>
+              <h2 className="text-xl font-semibold text-teal-800 mb-3">API Keys</h2>
               
               <div className="bg-zinc-800 rounded-lg p-3 border border-zinc-700">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-medium text-zinc-400">Production Key</span>
-                  <button className="text-xs text-orange-600 hover:text-orange-500">Regenerate</button>
+                  <button className="text-xs text-teal-800 hover:text-teal-500">Regenerate</button>
                 </div>
                 <div className="flex items-center gap-2">
                   <code className="flex-1 px-2 py-1.5 bg-zinc-900 rounded text-xs text-gray-100 font-mono">
@@ -139,7 +139,7 @@ function Settings() {
               <div className="bg-zinc-800 rounded-lg p-3 border border-zinc-700">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-medium text-zinc-400">Development Key</span>
-                  <button className="text-xs text-orange-600 hover:text-orange-500">Regenerate</button>
+                  <button className="text-xs text-teal-800 hover:text-teal-500">Regenerate</button>
                 </div>
                 <div className="flex items-center gap-2">
                   <code className="flex-1 px-2 py-1.5 bg-zinc-900 rounded text-xs text-gray-100 font-mono">
@@ -151,7 +151,7 @@ function Settings() {
                 </div>
               </div>
 
-              <button className="px-5 py-2 text-sm bg-orange-600 hover:bg-orange-500 rounded-lg transition-colors duration-200 font-medium">
+              <button className="px-5 py-2 text-sm bg-teal-800 hover:bg-teal-500 rounded-lg transition-colors duration-200 font-medium">
                 Generate New Key
               </button>
             </div>
@@ -160,7 +160,7 @@ function Settings() {
           {/* Preferences Tab */}
           {activeTab === 'preferences' && (
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-orange-600 mb-3">Code Review Preferences</h2>
+              <h2 className="text-xl font-semibold text-teal-800 mb-3">Code Review Preferences</h2>
               
               <div className="space-y-3">
                 {[
@@ -170,7 +170,7 @@ function Settings() {
                   { key: 'lineNumbers', label: 'Show Line Numbers', description: 'Display line numbers in code blocks' },
                   { key: 'autoFormat', label: 'Auto Format Code', description: 'Automatically format pasted code' },
                 ].map((item) => (
-                  <div key={item.key} className="flex items-center justify-between p-3 bg-zinc-800 rounded-lg border border-zinc-700 hover:border-orange-600/50 transition-colors">
+                  <div key={item.key} className="flex items-center justify-between p-3 bg-zinc-800 rounded-lg border border-zinc-700 hover:border-teal-800/50 transition-colors">
                     <div>
                       <h3 className="text-sm font-medium text-gray-100">{item.label}</h3>
                       <p className="text-xs text-zinc-400 mt-0.5">{item.description}</p>
@@ -180,7 +180,7 @@ function Settings() {
                       className="text-2xl transition-colors"
                     >
                       {settings[item.key] ? (
-                        <BsToggleOn className="text-orange-600" />
+                        <BsToggleOn className="text-teal-800" />
                       ) : (
                         <BsToggleOff className="text-zinc-600" />
                       )}
@@ -194,7 +194,7 @@ function Settings() {
           {/* Appearance Tab */}
           {activeTab === 'appearance' && (
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-orange-600 mb-3">Appearance</h2>
+              <h2 className="text-xl font-semibold text-teal-800 mb-3">Appearance</h2>
               
               <div>
                 <label className="block text-xs font-medium text-zinc-400 mb-2">Theme</label>
@@ -204,8 +204,8 @@ function Settings() {
                       key={theme}
                       className={`p-3 rounded-lg border-2 transition-all text-sm ${
                         theme === 'Dark'
-                          ? 'border-orange-600 bg-orange-600/10'
-                          : 'border-zinc-700 bg-zinc-800 hover:border-orange-600/50'
+                          ? 'border-teal-800 bg-teal-800/10'
+                          : 'border-zinc-700 bg-zinc-800 hover:border-teal-800/50'
                       }`}
                     >
                       <div className="font-medium">{theme}</div>
@@ -216,7 +216,7 @@ function Settings() {
 
               <div>
                 <label className="block text-xs font-medium text-zinc-400 mb-2">Code Editor Theme</label>
-                <select className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-orange-600 transition-colors">
+                <select className="w-full px-3 py-2 text-sm bg-zinc-800 border-2 border-zinc-700 rounded-lg text-gray-100 focus:outline-none focus:border-teal-800 transition-colors">
                   <option>Holi Theme (Default)</option>
                   <option>VS Code Dark</option>
                   <option>Dracula</option>
@@ -232,7 +232,7 @@ function Settings() {
                   min="10"
                   max="20"
                   defaultValue="12"
-                  className="w-full accent-orange-600"
+                  className="w-full accent-teal-800"
                 />
                 <div className="flex justify-between text-xs text-zinc-500 mt-1">
                   <span>10px</span>
@@ -245,14 +245,14 @@ function Settings() {
           {/* Security Tab */}
           {activeTab === 'security' && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-semibold text-orange-600 mb-4">Security Settings</h2>
+              <h2 className="text-2xl font-semibold text-teal-800 mb-4">Security Settings</h2>
               
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-zinc-400 mb-2">Current Password</label>
                   <input
                     type="password"
-                    className="w-full px-4 py-3 bg-zinc-800 border-2 border-zinc-700 rounded-xl text-gray-100 focus:outline-none focus:border-orange-600 transition-colors"
+                    className="w-full px-4 py-3 bg-zinc-800 border-2 border-zinc-700 rounded-xl text-gray-100 focus:outline-none focus:border-teal-800 transition-colors"
                     placeholder="••••••••"
                   />
                 </div>
@@ -260,7 +260,7 @@ function Settings() {
                   <label className="block text-sm font-medium text-zinc-400 mb-2">New Password</label>
                   <input
                     type="password"
-                    className="w-full px-4 py-3 bg-zinc-800 border-2 border-zinc-700 rounded-xl text-gray-100 focus:outline-none focus:border-orange-600 transition-colors"
+                    className="w-full px-4 py-3 bg-zinc-800 border-2 border-zinc-700 rounded-xl text-gray-100 focus:outline-none focus:border-teal-800 transition-colors"
                     placeholder="••••••••"
                   />
                 </div>
@@ -268,13 +268,13 @@ function Settings() {
                   <label className="block text-sm font-medium text-zinc-400 mb-2">Confirm New Password</label>
                   <input
                     type="password"
-                    className="w-full px-4 py-3 bg-zinc-800 border-2 border-zinc-700 rounded-xl text-gray-100 focus:outline-none focus:border-orange-600 transition-colors"
+                    className="w-full px-4 py-3 bg-zinc-800 border-2 border-zinc-700 rounded-xl text-gray-100 focus:outline-none focus:border-teal-800 transition-colors"
                     placeholder="••••••••"
                   />
                 </div>
               </div>
 
-              <button className="w-full md:w-auto px-6 py-3 bg-orange-600 hover:bg-orange-500 rounded-xl transition-colors duration-200 font-medium">
+              <button className="w-full md:w-auto px-6 py-3 bg-teal-800 hover:bg-teal-500 rounded-xl transition-colors duration-200 font-medium">
                 Update Password
               </button>
 
@@ -285,7 +285,7 @@ function Settings() {
                     <h4 className="font-medium text-gray-100">2FA Status</h4>
                     <p className="text-sm text-zinc-400 mt-1">Add an extra layer of security</p>
                   </div>
-                  <button className="px-4 py-2 bg-orange-600 hover:bg-orange-500 rounded-lg transition-colors duration-200 text-sm">
+                  <button className="px-4 py-2 bg-teal-800 hover:bg-teal-500 rounded-lg transition-colors duration-200 text-sm">
                     Enable
                   </button>
                 </div>

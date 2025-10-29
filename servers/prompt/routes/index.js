@@ -6,4 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+import codeReviewRouter from './temp_codeReview.js';
+router.use("/prompts",codeReviewRouter)
+
 export default router;

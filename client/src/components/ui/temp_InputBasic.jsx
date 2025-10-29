@@ -22,88 +22,90 @@ function InputBasic({ onReviewComplete }) {
         `// Code Snippet ${i + 1}\n${s.code}`
       ).join('\n\n');
 
-      // Use POST + streaming response reader instead of EventSource
-      // (EventSource only supports GET and cannot send a request body).
+      // Make the POST request
       const response = await fetch('http://localhost:3001/prompts/review-code', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, code: combinedCode })
+        body: JSON.stringify({ 
+          code: combinedCode,
+          prompt: prompt || 'Reviewing code for potential improvements...'
+        })
       });
 
       if (!response.ok) {
-        throw new Error(`Server responded with ${response.status}`);
+        throw new Error('Network response was not ok');
       }
 
+      // Process the SSE response
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
-      let buffer = '';
       let jsonParts = '';
 
-      const processBuffer = (chunkStr) => {
-        buffer += chunkStr;
-        const events = buffer.split('\n\n');
-        buffer = events.pop(); // keep partial
+      while (true) {
+        const { done, value } = await reader.read();
+        
+        if (done) {
+          break;
+        }
 
-        for (const ev of events) {
-          const lines = ev.split('\n').map(l => l.trim()).filter(Boolean);
-          for (const line of lines) {
-            if (!line.startsWith('data:')) continue;
-            const payload = line.replace(/^data:\s*/, '');
+        // Decode the chunk and split into SSE messages
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
             try {
-              const data = JSON.parse(payload);
+              const data = JSON.parse(line.slice(6));
+
+              if (data.error) {
+                throw new Error(data.message || 'Review failed');
+              }
 
               if (data.status === 'started') {
                 onReviewComplete({
-                  prompt: prompt || 'Code review in progress...',
+                  prompt: prompt || 'Code review starting...',
                   code: combinedCode,
-                  review: 'Starting code review...',
+                  review: 'Initializing code review...',
                   isStreaming: true
                 });
               } else if (data.status === 'completed') {
-                try {
-                  const parsedReview = JSON.parse(jsonParts);
-                  onReviewComplete({
-                    ...parsedReview,
-                    isStreaming: false,
-                    timestamp: new Date().toISOString()
-                  });
-                } catch (parseError) {
-                  console.error('Failed to parse final JSON:', parseError);
-                  onReviewComplete({
-                    prompt: prompt || 'Review completed with errors',
-                    code: combinedCode,
-                    review: 'Error: Could not parse the review data.',
-                    isStreaming: false,
-                    isError: true
-                  });
+                if (jsonParts) {
+                  try {
+                    const parsedReview = JSON.parse(jsonParts);
+                    onReviewComplete({
+                      ...parsedReview,
+                      isStreaming: false,
+                      timestamp: new Date().toISOString()
+                    });
+                  } catch (parseError) {
+                    throw new Error('Failed to parse review data');
+                  }
                 }
+                break;
               } else if (data.content) {
                 jsonParts += data.content;
                 onReviewComplete({
                   prompt: prompt || 'Code review in progress...',
                   code: combinedCode,
-                  review: jsonParts,
-                  isStreaming: true
+                  review: 'Processing...',
+                  isStreaming: true,
+                  partialContent: jsonParts
                 });
               }
-
-            } catch (err) {
-              console.error('Error processing SSE payload:', err);
+            } catch (error) {
+              console.error('Error processing SSE message:', error);
+              onReviewComplete({
+                prompt: prompt || 'Error occurred',
+                code: combinedCode,
+                review: error.message || 'An error occurred during review',
+                isStreaming: false,
+                isError: true
+              });
+              break;
             }
           }
         }
-      };
-
-      // Read the stream
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        const chunk = decoder.decode(value, { stream: true });
-        processBuffer(chunk);
       }
-
-      // Process any remaining buffer
-      if (buffer) processBuffer('\n\n');
 
       // Clear form
       setCodeSnippets([]);
@@ -112,7 +114,13 @@ function InputBasic({ onReviewComplete }) {
 
     } catch (error) {
       console.error('Error:', error);
-      alert('Failed to get code review. Please try again.');
+      onReviewComplete({
+        prompt: prompt || 'Error occurred',
+        code: combinedCode,
+        review: error.message || 'Failed to get code review',
+        isStreaming: false,
+        isError: true
+      });
     } finally {
       setIsSubmitting(false);
     }

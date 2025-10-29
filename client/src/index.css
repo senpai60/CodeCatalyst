@@ -15,7 +15,7 @@
 }
 
 .code-review-display::-webkit-scrollbar-thumb {
-  background-color: rgba(37, 99, 235, 0.35); /* Tailwind blue-600 tone */
+  background-color: #013634; /* Tailwind blue-600 tone */
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -23,13 +23,13 @@
 }
 
 .code-review-display::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(252, 87, 11, 0.6);
+  background-color: #013634;
 }
 
 /* Firefox support */
 .code-review-display {
   scrollbar-width: thin;
-  scrollbar-color: rgba(252, 87, 11, 0.35) transparent;
+  scrollbar-color: #013634 transparent;
   position: relative;
 }
 

@@ -109,15 +109,17 @@ abstract class BankAccount {
 
 function LeftSection() {
   return (
-    <section className="left-main h-full overflow-auto code-review-display">
+    <section className="left-main h-full w-full overflow-auto code-review-display">
       <NavMain />
       
       {/* Define Routes */}
-      <Routes>
+      <div className="md:mt-10 lg:mt-10">
+        <Routes>
         <Route path="/" element={<HomePage dummyCodeReview={dummyCodeReview} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
+      </div>
     </section>
   );
 }

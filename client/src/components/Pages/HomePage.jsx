@@ -1,30 +1,92 @@
-
+import { useState } from 'react';
 import CodeContainer from "../ui/CodeContainer";
 import InputBasic from "../ui/InputBasic";
-function HomePage({dummyCodeReview}) {
+
+function HomePage({ dummyCodeReview }) {
+  const [reviews, setReviews] = useState([]);
+  const [streamingReview, setStreamingReview] = useState(null);
+
+  const handleReviewComplete = (reviewData) => {
+    if (reviewData.isStreaming) {
+      // Update streaming review in real-time
+      setStreamingReview(reviewData);
+    } else {
+      // Add completed review to history
+      setReviews(prev => [reviewData, ...prev]);
+      setStreamingReview(null);
+    }
+  };
+
   return (
     <section className="left-main h-full">
       
       <section className="w-full px-3 sm:px-2 pb-2">
-        <InputBasic />
+        <InputBasic onReviewComplete={handleReviewComplete} />
       </section>
 
       <section className="code-review-display h-[75svh] overflow-y-auto w-full md:px-10">
-        {dummyCodeReview.map((codeReview, reviewIndex) => (
+        
+        {/* Streaming Review (Real-time) */}
+        {streamingReview && (
+          <div className="review mt-6 sm:mt-10 space-y-4 sm:space-y-6 animate-pulse">
+            <p className="text-xs sm:text-sm text-gray-400 italic px-2 sm:px-10 md:px-20 my-3 sm:my-5">
+              🧩 {streamingReview.prompt}
+            </p>
+
+            <div className="code rounded-lg sm:rounded-2xl sm:p-6 md:p-10 bg-zinc-900 relative">
+              <pre className="text-xs sm:text-sm text-gray-300 whitespace-pre-wrap p-4">
+                {streamingReview.code.substring(0, 200)}...
+              </pre>
+            </div>
+
+            <div className="px-2 sm:px-10 md:px-20 mt-4 sm:mt-6 text-xs sm:text-sm text-gray-300">
+              <div className="flex items-center gap-2 text-orange-400">
+                <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" />
+                <span className="font-semibold">Streaming Review...</span>
+              </div>
+              <div className="mt-3 whitespace-pre-wrap">
+                {streamingReview.review}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Completed Reviews */}
+        {reviews.map((review, reviewIndex) => (
           <div
             key={reviewIndex}
+            className="review mt-6 sm:mt-10 space-y-4 sm:space-y-6"
+          >
+            <p className="text-xs sm:text-sm text-gray-400 italic px-2 sm:px-10 md:px-20 my-3 sm:my-5">
+              🧩 {review.prompt}
+            </p>
+
+            <div className="code rounded-lg sm:rounded-2xl sm:p-6 md:p-10 bg-zinc-900 relative">
+              <pre className="text-xs sm:text-sm text-gray-300 whitespace-pre-wrap p-4">
+                {review.code}
+              </pre>
+            </div>
+
+            <div className="px-2 sm:px-10 md:px-20 mt-4 sm:mt-6 text-xs sm:text-sm text-gray-300 whitespace-pre-wrap">
+              {review.review}
+            </div>
+          </div>
+        ))}
+
+        {/* Dummy Data for Reference */}
+        {dummyCodeReview.map((codeReview, reviewIndex) => (
+          <div
+            key={`dummy-${reviewIndex}`}
             className="review mt-6 sm:mt-10 space-y-4 sm:space-y-6"
           >
             <p className="text-xs sm:text-sm text-gray-400 italic px-2 sm:px-10 md:px-20 my-3 sm:my-5">
               🧩 {codeReview.prompt}
             </p>
 
-            {/* --- Code Block --- */}
             <div className="code rounded-lg sm:rounded-2xl sm:p-6 md:p-10 bg-zinc-900 relative">
               <CodeContainer codeReview={codeReview} code={codeReview.code} />
             </div>
 
-            {/* --- Review Summary --- */}
             <div className="px-2 sm:px-10 md:px-20 mt-4 sm:mt-6 text-xs sm:text-sm text-gray-300 space-y-3 sm:space-y-4">
               <p className="break-words">
                 <span className="font-semibold text-emerald-400">
@@ -33,7 +95,6 @@ function HomePage({dummyCodeReview}) {
                 {codeReview.review.overall} ({codeReview.review.score}/10)
               </p>
 
-              {/* Strengths */}
               <div>
                 <p className="font-semibold text-blue-400 mb-1 sm:mb-2">✅ Strengths</p>
                 <ul className="list-disc list-inside text-gray-400 space-y-1 pl-2">
@@ -43,7 +104,6 @@ function HomePage({dummyCodeReview}) {
                 </ul>
               </div>
 
-              {/* Issues */}
               <div>
                 <p className="font-semibold text-rose-400 mb-1 sm:mb-2">⚠️ Issues</p>
                 <ul className="list-disc list-inside text-gray-400 space-y-2 pl-2">
@@ -67,7 +127,6 @@ function HomePage({dummyCodeReview}) {
                 </ul>
               </div>
 
-              {/* Improved Code */}
               <div>
                 <p className="font-semibold text-indigo-400 mb-2 sm:mb-3">
                   ✨ Improved Code Suggestion
@@ -80,7 +139,6 @@ function HomePage({dummyCodeReview}) {
                 </div>
               </div>
 
-              {/* Recommendations */}
               <div>
                 <p className="font-semibold text-amber-400 mb-1 sm:mb-2">
                   🧠 Recommendations
@@ -92,7 +150,6 @@ function HomePage({dummyCodeReview}) {
                 </ul>
               </div>
 
-              {/* Metrics */}
               <div className="mt-3 sm:mt-4 text-xs text-gray-500 space-y-1">
                 <p>
                   📊 <span className="font-semibold">Complexity:</span>{" "}
@@ -112,7 +169,7 @@ function HomePage({dummyCodeReview}) {
         ))}
       </section>
     </section>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
