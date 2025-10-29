@@ -3,12 +3,30 @@ import { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { holiTheme } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+
 function InputBasic({ onReviewComplete }) {
   const [code, setCode] = useState('');
   const [prompt, setPrompt] = useState('');
   const [codeSnippets, setCodeSnippets] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const MAX_SNIPPETS = 3;
+
+  // ADD THIS CLEANUP FUNCTION
+  const cleanJSONResponse = (text) => {
+    // Remove markdown code blocks (``````)
+    let cleaned = text.replace(/``````\s*/g, '');
+    
+    // Remove leading/trailing whitespace
+    cleaned = cleaned.trim();
+    
+    // If there's extra text before or after JSON, extract just the JSON part
+    const jsonMatch = cleaned.match(/\{[\s\S]*\}/);
+    if (jsonMatch) {
+      return jsonMatch[0];
+    }
+    
+    return cleaned;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,8 +40,6 @@ function InputBasic({ onReviewComplete }) {
         `// Code Snippet ${i + 1}\n${s.code}`
       ).join('\n\n');
 
-      // Use POST + streaming response reader instead of EventSource
-      // (EventSource only supports GET and cannot send a request body).
       const response = await fetch('http://localhost:3001/prompts/review-code', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -61,7 +77,11 @@ function InputBasic({ onReviewComplete }) {
                 });
               } else if (data.status === 'completed') {
                 try {
-                  const parsedReview = JSON.parse(jsonParts);
+                  // APPLY CLEANING HERE BEFORE PARSING
+                  const cleanedJSON = cleanJSONResponse(jsonParts);
+                  console.log('Cleaned JSON:', cleanedJSON.substring(0, 200) + '...'); // Debug first 200 chars
+                  
+                  const parsedReview = JSON.parse(cleanedJSON);
                   onReviewComplete({
                     ...parsedReview,
                     isStreaming: false,
@@ -69,6 +89,7 @@ function InputBasic({ onReviewComplete }) {
                   });
                 } catch (parseError) {
                   console.error('Failed to parse final JSON:', parseError);
+                  console.error('Raw jsonParts:', jsonParts); // Debug raw data
                   onReviewComplete({
                     prompt: prompt || 'Review completed with errors',
                     code: combinedCode,
