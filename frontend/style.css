@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+@font-face {
+    font-family: font1;
+    src: url(./font1.woff2);
+}
+
+@font-face {
+    font-family: font2;
+    src: url(./font2.woff2);
+}
+
+.big-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-first {
+    width: 60%;
+    display: flex;
+    height: 100vh;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    background: linear-gradient(to bottom, #b66dff 0%, #2b1055 40%, #000000 90%);
+}
+
+.card-inner-first {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 300px;
+    padding-bottom: 4rem;
+}
+
+.card-inner-first .text,
+.card-first .btn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-inner-first .text h1 {
+    font-family: font1;
+    font-size: 1.9rem;
+}
+
+.card-inner-first .text p {
+    font-size: 0.9rem;
+    font-family: font2;
+}
+
+.card-first .btn {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-first .btn button {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.7rem 2rem;
+    background-color: #64636334;
+    color: white;
+}
+
+.card-first .btn button:hover {
+    background-color: white;
+    color: black;
+}
+
+.card-second {
+    width: 40%;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #000000;
+}
+
+.card-second .card-inner-second {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 350px;
+    padding: 2rem 1rem;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.card-inner-second .title {
+    font-size: 1.7rem;
+}
+
+.card-inner-second .subtitle {
+    font-size: 0.7rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(197, 195, 195);
+}
+
+.card-inner-second .socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    min-width: 150px;
+}
+
+.btn-social:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-social.google img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 50%;
+}
+
+.divider {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.divider div {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.card-second form {
+    display: flex;
+    text-align: start;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card-inner-second .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: rgb(205, 202, 202);
+}
+
+.card-inner-second .row {
+    padding: 0.5rem 0rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.card-inner-second input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #ada7a734;
+    color: white;
+    transition: all 0.25s ease;
+}
+.card-inner-second input:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+.signup-btn{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 0.8rem;
+}
+.bottom{
+    font-size: 0.8rem;
+    font-family:font1;
+    color: rgb(149, 147, 147);
+}
+.bottom a{
+    text-decoration: none;
+    color: white;
+}
+
+
+
