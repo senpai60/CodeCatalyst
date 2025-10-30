@@ -25,6 +25,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 }
 
 .card-first {
@@ -104,6 +105,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
+
 .card-inner-second .title {
     font-size: 1.7rem;
 }
@@ -162,6 +164,7 @@ body {
     height: 1px;
     background-color: rgba(255, 255, 255, 0.15);
 }
+
 .card-second form {
     display: flex;
     text-align: start;
@@ -192,26 +195,33 @@ body {
     color: white;
     transition: all 0.25s ease;
 }
+
 .card-inner-second input:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
 }
-.signup-btn{
+
+.signup-btn {
     padding: 0.5rem;
     border-radius: 0.5rem;
     border: none;
     font-size: 0.8rem;
 }
-.bottom{
+
+.bottom {
     font-size: 0.8rem;
-    font-family:font1;
+    font-family: font1;
     color: rgb(149, 147, 147);
 }
-.bottom a{
+
+.bottom a {
     text-decoration: none;
     color: white;
 }
 
-
-
+@media (min-width: 1024px) {
+    .big-container {
+        flex-direction: row;
+    }
+}
