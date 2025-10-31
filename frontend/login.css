@@ -23,9 +23,6 @@ body {
 .big-container {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
 }
 
 .card-first {
@@ -38,6 +35,7 @@ body {
     color: white;
     text-align: center;
     background: linear-gradient(to bottom, #b66dff 0%, #2b1055 40%, #000000 90%);
+    user-select: none;
 }
 
 .card-inner-first {
@@ -77,6 +75,7 @@ body {
     padding: 0.7rem 2rem;
     background-color: #64636334;
     color: white;
+    cursor: pointer;
 }
 
 .card-first .btn button:hover {
@@ -106,14 +105,26 @@ body {
     color: white;
 }
 
+.divider span{
+    user-select: none;
+}
+
+/* .card-inner-second #tagLog{
+    overflow: hidden;
+} */
+
 .card-inner-second .title {
     font-size: 2rem;
+    user-select: none;
 }
+
+
 .card-inner-second .socials {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    overflow: hidden;
 }
 
 .btn-social {
@@ -126,11 +137,11 @@ body {
     color: #fff;
     font-weight: 500;
     font-size: 0.9rem;
-    padding: 0.7rem 1.2rem;
+    padding: 0.7rem 1.3rem;
     border-radius: 0.6rem;
     cursor: pointer;
     transition: all 0.25s ease;
-    min-width: 150px;
+    /* min-width: 150px; */
 }
 
 .btn-social:hover {
@@ -163,6 +174,7 @@ body {
     text-align: start;
     flex-direction: column;
     gap: 1.5rem;
+    overflow: hidden;
 }
 
 .card-inner-second .field {
@@ -171,6 +183,7 @@ body {
     gap: 0.5rem;
     font-size: 0.8rem;
     color: rgb(205, 202, 202);
+    overflow: hidden;
 }
 .card-inner-second input {
     width: 100%;
@@ -193,8 +206,15 @@ body {
     border-radius: 0.5rem;
     border: none;
     font-size: 0.8rem;
+    cursor: pointer;
 }
-@media (min-width: 1024px) {
+
+.login-btn:hover{
+    background: transparent;
+    color: rgb(128, 122, 122);
+    border: 0.2rem solid rgb(45, 42, 42);
+}
+@media (min-width: 524px) {
     .big-container {
         flex-direction: row;
     }
