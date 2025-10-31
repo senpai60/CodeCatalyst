@@ -3,7 +3,7 @@ import RightSection from "./components/layout/RightSection"
 
 function App() {
   return (
-    <main className='w-full h-screen bg-zinc-950 p-5 flex gap-2 text-zinc-300'>
+    <main className='w-full h-screen bg-zinc-950 px-0 md:px-5 py-4 flex gap-2 text-zinc-300 f-inter'>
       <LeftSection/>
       <RightSection/>
     </main>
