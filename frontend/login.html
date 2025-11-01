@@ -25,7 +25,9 @@
         </div>
         <div class="card-second">
             <div class="card-inner-second">
-                <h2 class="title">Log In</h2>
+                <div id="tagLog">
+                    <h2 class="title">Log In</h2>
+                </div>
                 <div class="socials">
                     <button class="btn-social google">
                         <span class="google-img"> <img src="web_dark_sq_na.svg" alt="Google logo"></span>
@@ -46,12 +48,12 @@
                     <span>or</span>
                     <div></div>
                 </div>
-                <form>
-                    <div class="field">
+                <form id="fillForm">
+                    <div class="field fld1">
                         <label for="email">Email</label>
                         <input id="email" type="email" autocomplete="email" placeholder="Enter your Email Address" />
                     </div>
-                    <div class="field">
+                    <div class="field fld2">
                         <label for="Password">Password</label>
                         <input id="Password" type="Password" autocomplete="Password"
                             placeholder="Enter your Email Address" />
@@ -62,6 +64,10 @@
             </div>
         </div>
     </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../bitCode/gsap/login.js"></script>
 </body>
 
 </html>
